@@ -61,8 +61,10 @@ def add_task(tasks):
 
 
 def view_tasks(tasks):
-    pending = [t for t in tasks if not t["completed"]]
-    completed = [t for t in tasks if t["completed"]]
+    tasks_sorted = sorted(tasks, key=lambda x: x["due_date"])
+
+    pending = [t for t in tasks_sorted if not t["completed"]]
+    completed = [t for t in tasks_sorted if t["completed"]]
 
     print("\n งานรอดำเนินการ")
     for t in pending:
